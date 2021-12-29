@@ -1,0 +1,192 @@
+/* 歌曲列表模块 */
+.song_wrap{
+    position: relative;
+    width: 400px;
+    height: 520px;
+    font-size: 14px;
+}
+.song_list::-webkit-scrollbar {
+    display: none;
+  }
+  .songTitle_wrap{
+      margin-bottom: 10px;
+  }
+  .song_wrap ul {
+      border-right: 1px solid rgba(255, 255, 255,0.2);
+  }
+.song_wrap ul li{
+    height: 40px;
+    line-height: 40px;
+    position: relative;
+    box-sizing: border-box;
+}
+.song_wrap ul li:hover{
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+.song_list {
+    width: 100%;
+    overflow-y: auto;
+    height: 100%;
+  }
+.song_list div{
+    display: inline-block;
+    color: white;
+}
+
+.song_list .songTitle{
+    box-sizing: border-box;
+    padding-left: 10px;
+    width: 200px;
+    height: 40px;
+    line-height: 40px;
+    float: left;
+}
+.song_list .singerTitle{
+    width: 120px;
+    height: 40px;
+    line-height: 40px;
+    float: left;
+}
+.song_list .durationTitle{
+    width: 80px;
+    height: 40px;
+    line-height: 40px;
+    float: right;
+}
+
+.songName_wrap {
+    width: 200px; 
+    height: 40px;
+    line-height: 40px;
+    box-sizing: border-box;
+    padding-left:10px;
+    float: left;
+}
+.songName_wrap span{
+    cursor: pointer;
+}
+.songName_wrap span:hover{
+    color: rgb(49, 49, 246);
+}
+.song_list .songName{
+    width: 100px;
+    height: 40px;
+    overflow: hidden;
+    white-space:nowrap;
+    text-overflow:ellipsis;
+}
+
+.songName:hover{
+    overflow: visible;
+}
+.song_list div{
+    vertical-align: middle;
+}
+.song_list .singer{
+    float: left;
+    width: 120px;
+    overflow: hidden;
+    white-space:nowrap;
+    text-overflow:ellipsis;
+}
+.song_list .songDuration{
+    width: 80px;
+    float: right;
+}
+/* 歌曲信息模块 */
+.songInformation_wrap {
+    width: 600px;
+    height: 520px;
+    position: absolute;
+    left: 400px;
+    top: 0px;
+}
+
+/* 播放杆位置 */
+.play_bar {
+    position: absolute;
+    left: 240px;
+    top: -10px;
+    z-index: 10;
+    transform: rotate(-25deg);
+    transform-origin: 12px 12px;
+    transition: 1s;
+  }
+/* 胶片 */
+.disc {
+    width: 260px;
+    height: 260px;
+    position: absolute;
+    left: 170px;
+    top: 100px;
+    z-index: 9;
+}
+/* 图片 */
+.cover {
+  position: absolute;
+  left: 225px;
+  top: 155px;
+  width: 150px;
+  height: 150px;
+  border-radius: 75px;
+  z-index: 8;
+}
+/* 旋转的动画 */
+@keyframes Rotate {
+    from {
+      transform: rotateZ(0);
+    }
+    to {
+      transform: rotateZ(360deg);
+    }
+  }
+  /* 旋转的类名 */
+  .autoRotate {
+    animation-name: Rotate;
+    animation-iteration-count: infinite;
+    animation-play-state: paused;
+    animation-timing-function: linear;
+    animation-duration: 60s;
+  }
+  /* 是否正在播放 */
+  .songInformation_wrap.playing .disc,
+  .songInformation_wrap.playing .cover {
+    animation-play-state: running;
+  }
+  /* 播放杆 转回去 */
+.songInformation_wrap.playing .play_bar {
+    transform: rotate(0);
+  }
+
+  /* mv模块 */
+  .video_wrap{
+    width: 800px;
+    height: 520px;
+    position: absolute;
+    left: 200px;
+    top: 0px;
+  }
+  .video_wrap video{
+    width: 800px;
+    height: 520px;
+    object-fit:fill;
+    position: absolute;
+    top: 0px;
+    outline: none;
+  }
+  .close{
+      position: absolute;
+      right: 0;
+      text-align: center;
+      line-height: 24px;
+      width: 24px;
+      height: 24px;
+      font-size: 24px;
+      color: white;
+  }
+
+/* 歌曲被收藏的样式 */
+/* .collection{
+
+} */
