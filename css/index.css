@@ -1,0 +1,101 @@
+/* 左边内容 */
+.index_left{
+    float: left;
+    width: 200px;
+    height: 520px;
+}
+
+.index_left ul{
+    box-sizing: border-box;
+    width: 200px;
+    padding: 50px 0;
+    border-right: 1px solid rgba(255, 255, 255,0.2);
+}
+.index_left ul li{
+    width: 200px;
+    box-sizing: border-box;
+    height: 60px;
+    line-height: 60px;
+    letter-spacing: 1px;
+    color: white;
+}
+.index_left ul li span {
+    cursor: pointer;
+    text-align: center;
+    display: block;
+    margin: 0 auto;
+    width: 50%;
+    border-radius: 8px;
+}
+.index_left ul li span:hover{
+    background-color: rgba(255, 255, 255,0.2);
+}
+
+/* 右边内容 */
+.index_right{
+    float: right;
+    width: 800px;
+    height: 520px;
+}
+/* 图片盒子 */
+.images-box{
+    position: relative;
+    user-select: none; /* 鼠标无法选中 */
+    width: 700px;
+    height: 260px;
+    margin: 0 auto;
+    cursor: pointer;/* 经过图片盒子鼠标会变抓手 */
+}
+
+.pic{
+    width: 700px;
+    height: 260px;
+}
+ol {
+    position: absolute;
+    left: 250px;
+    bottom: -20px;
+}
+ol li {
+    display: inline-block;
+    margin: 0 5px;
+    width: 30px;
+    height: 10px;
+    border-radius: 30%;
+    background-color: rgba(255, 255, 255,0.2);
+}
+
+/* 热门区域 */
+.hotList_wrap{
+    width: 800px;
+    height: 260px;
+}
+h2{
+    margin-left: 50px;
+    height: 20%;
+    line-height: 52px;
+    color:rgba(255, 255, 255,0.5);
+}
+.hotList{
+    box-sizing: border-box;
+    padding: 0 50px 0 0;
+    width: 800px;
+    height: 80%;
+    display: flex;
+    flex-flow: row wrap;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+.hotList::-webkit-scrollbar{
+    display: none;
+}
+.hotList div{
+    width: 200px;
+    height: 120px;
+    margin: 0 0 50px 50px;
+    background-color: antiquewhite;
+}
+.hotList img{
+    width: 200px;
+    height: 100px;
+}

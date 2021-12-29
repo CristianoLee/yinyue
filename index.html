@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="css/icon.css">
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/search.css">
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="js/vue.js"></script>
+    <script src="js/jquery.js"></script>
+    <script src="js/index.js"></script>
+    <script src="js/search.js"></script>
+    <title>音悦</title>
+</head>
+
+<body>
+    <!-- 背景 -->
+    <div class="bg">
+        <!-- 主体区域 -->
+        <div id="main" class="main" :class="{skinChangeWhite:skinWhite,skinChangeBlack:skinBlack}">
+            <!-- 头部区域 -->
+            <div class="head">
+                <!-- 搜索模块 -->
+                <div class="search_wrap">
+                    <!-- logo -->
+                    <div class="logo">悦耳</div>
+                    <!-- 搜索框 -->
+                    <span class="search_box">
+                        <input type="search" placeholder="周杰伦" autocomplete="off" v-model="queryValue"
+                            @keyup.enter="searchMusic">
+                        <span class="iconfont search search_logo" @click="searchMusic"></span>
+                    </span>
+                    <!-- 更换皮肤模块 -->
+                    <!-- 皮肤按钮 -->
+                    <span class="iconfont skin skin" @click="toggleSkin"></span>
+                    <!-- 皮肤列表 -->
+                    <div class="skin_wrap" v-show="isSkinShow">
+                        <div class="skin_blue" @click="changeBlue"></div>
+                        <div class="skin_white" @click="changeWhite"></div>
+                        <div class="skin_black" @click="changeBlack"></div>
+                    </div>
+                </div>
+                <!-- 导航栏模块 -->
+                <div class="nav_wrap">
+                    <ul>
+                        <li @click="toggleIndexContent">发现音乐</li>
+                        <li>我的音乐</li>
+                        <li>推荐</li>
+                        <li @click="toggleSearchContent" v-show="navShow">
+                            搜索：{{queryValue}}
+                            <div class="nav_remove" @click.stop="clearNav">x</div> <!-- .stop阻止冒泡 -->
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <!-- 内容中心区域(发现音乐) -->
+            <div class="content indexCenter" v-show="indexShow">
+                <!-- 分类 -->
+                <div class="index_left">
+                    <ul>
+                        <li><span>华语</span></li>
+                        <li><span>流行</span></li>
+                        <li><span>摇滚</span></li>
+                        <li><span>民谣</span></li>
+                        <li><span>粤语</span></li>
+                        <li><span>欧美</span></li>
+                        <li><span>其他</span></li>
+                    </ul>
+                </div>
+                <!-- 内容 -->
+                <div class="index_right">
+                    <!-- 图片盒子 -->
+                    <div class="images-box">
+                        <img src="" class="pic">
+                        <ol></ol>
+                    </div>
+                    <!-- 热门区域 -->
+                    <div class="hotList_wrap">
+                        <h2>热门歌曲</h2>
+                        <div class="hotList">
+                            <div>
+                                <img src="images/white.png" alt="">
+                                <span>歌曲名称</span>
+                            </div>
+                            <div>
+                                <img src="images/white.png" alt="">
+                                <span>歌曲名称</span>
+                            </div>
+                            <div>
+                                <img src="images/white.png" alt="">
+                                <span>歌曲名称</span>
+                            </div>
+                            <div>
+                                <img src="images/white.png" alt="">
+                                <span>歌曲名称</span>
+                            </div>
+                            <div>
+                                <img src="images/white.png" alt="">
+                                <span>歌曲名称</span>
+                            </div>
+                            <div>
+                                <img src="images/white.png" alt="">
+                                <span>歌曲名称</span>
+                            </div>
+                            <div>
+                                <img src="images/white.png" alt="">
+                                <span>歌曲名称</span>
+                            </div>
+                            <div>
+                                <img src="images/white.png" alt="">
+                                <span>歌曲名称</span>
+                            </div>
+                            <div>
+                                <img src="images/white.png" alt="">
+                                <span>歌曲名称</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <!-- 内容中心区域(我的音乐) -->
+            <div class="content myCenter"></div>
+            <!-- 内容中心区域(搜索音乐) -->
+            <div class="content searchCenter" v-show="searchShow">
+                <!-- 歌曲列表模块 -->
+                <div class="song_wrap">
+                    <ul class="song_list">
+                        <div class="songTitle_wrap">
+                            <div class="songTitle">歌曲名</div>
+                            <div class="singerTitle">歌手</div>
+                            <div class="durationTitle">时长</div>
+                        </div>
+                        <hr>
+                        <li v-for="(item,index) in musicList">
+                            <div class="songName_wrap">
+                                <div class="songName" @click="playMusic(item.id)"><span>{{item.name}}</span></div>
+                                <span class="iconfont play play_btn" @click="playMusic(item.id)"></span>
+                                <div>
+                                    <span class="iconfont collection collection_btn" title="收藏"
+                                        @click="songCollection(item)" :class="{collection:isCollection}"></span>
+                                </div>
+                                <span class="iconfont MV mv_btn" @click="playMv(item.mvid)"></span>
+                            </div>
+                            <div class="singer">
+                                <span>{{item.singerName}}</span>
+                            </div>
+                            <div class="songDuration">
+                                {{item.songTime}}
+                            </div>
+                            <!-- <div>{{item}}</div> -->
+                        </li>
+                    </ul>
+                </div>
+                <!-- 歌曲信息模块 -->
+                <div class="songInformation_wrap" :class="{playing:discShow}" v-show="songInfoShow">
+                    <img src="images/player_bar.png" class="play_bar" />
+                    <!-- 黑胶碟片 -->
+                    <img src="images/disc.png" class="disc autoRotate" />
+                    <img :src="musicPicurl" class="cover autoRotate" />
+                </div>
+                <!-- mv模块 -->
+                <div class="video_wrap" v-show="mvShow" style="display: none;">
+                    <video :src="mvUrl" controls="controls"></video>
+                    <div class="close" @click="mvHide">x</div>
+                </div>
+            </div>
+            <!-- 底部播放器区域 -->
+            <div class="play_wrap">
+                <audio @play="play" @pause="pause" :src="musicUrl" controls="controls" autoplay="autoplay" loop="loop"
+                    class="myaudio"></audio>
+            </div>
+            <div class="collectionMask" style="display: none;" ref="test">
+                <span>收藏成功！已添加到我的收藏</span>
+            </div>
+        </div>
+
+
+    </div>
+</body>
+
+</html>

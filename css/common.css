@@ -1,0 +1,222 @@
+/* 通用模板 */
+*{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+hr{
+    width: 380px;
+    border: none; 
+    height: 1px;
+    background-color: rgba(209, 209, 209, 0.5);
+    margin: auto;
+}
+/* 背景模块 */
+.bg {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: url("../images/bg.jpg") no-repeat;
+    background-size: 100% 100%;
+  }
+
+/* 主体区域 */
+.main{
+    position: relative;
+    width: 1000px;
+    height: 700px;
+    background: url(../images/blue.png) no-repeat center/1000px 700px;
+    margin: 100px auto;
+}
+/* 头部区域 */
+.head{
+    position: relative;
+    height: 100px;
+    border-radius: 5px 5px 0 0;
+    box-sizing: border-box;
+    padding-top: 10px;
+    border-bottom: 1px solid rgba(255, 255, 255,0.2);
+}
+/* 搜索模块 */
+.search_wrap{
+    height: 60px; 
+}
+/* logo */
+.search_wrap .logo{
+    position: absolute;
+    left: 20px;
+    width: 36px;
+    height: 36px;
+}
+
+.search_box{
+    position: relative;
+   margin-left: 300px;
+    border-radius: 18px;
+    display: block;
+    width: 300px;
+    height: 36px;
+    background-color: rgba(255, 255, 255, 0.5);
+}
+/* 搜索框 */
+.search_wrap input{
+    display: inline-block;
+    width: 270px;
+    height: 36px;
+    border-radius: 18px 0 0 18px;
+    border: none;
+    outline: none;
+    background:none;
+    text-indent: 15px;
+}
+input[type="search"]::-webkit-search-cancel-button {
+    -webkit-appearance: none;
+    height: 16px;
+    width: 16px;
+    background: url(../images/delete.png) no-repeat;
+    background-size: contain;
+    cursor: pointer;
+  }
+
+/* 搜索按钮 */
+.search_wrap .search_logo{
+position: absolute;
+    right: 10px;
+    top: 7px;
+    font-size: 20px;
+    cursor: pointer;
+}
+/* 更换皮肤 */
+.skin{
+    position: absolute;
+    top: 10px;
+    right: 100px;
+    cursor: pointer;
+    font-size: 24px;
+}
+/* 皮肤盒子 */
+.skin_wrap{
+    position: absolute;
+    right: 20px;
+    width: 180px;
+    height: 50px;
+    background-color: rgba(255, 255, 255, 0.3);
+    box-sizing: border-box;
+    padding-top: 10px;
+    display: flex;
+    justify-content: space-evenly;
+}
+.skin_blue{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: #1eacda;
+    cursor: pointer;
+}
+.skin_white{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: rgb(200, 216, 221);
+    cursor: pointer;
+}
+.skin_black{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: rgb(48, 48, 49);
+    cursor: pointer;
+}
+
+.skinChangeWhite{
+    /* background-color: rgb(200, 216, 221) */
+    background: url(../images/white.png) no-repeat center/1000px 700px;
+}
+.skinChangeBlack{
+    /* background-color: rgb(48, 48, 49); */
+    background: url(../images/black.png) no-repeat center/1000px 700px;
+    
+}
+/* 导航栏模块 */
+.nav_wrap{
+    height: 40px;
+    position: absolute;
+    bottom: 0;
+}
+.nav_wrap ul li{
+    float: left;
+    width: 150px;
+    height: 40px;
+    line-height: 40px;
+    background-color: rgba(255, 255, 255, 0.3);
+    color:white;
+    font-size: 14px;
+    margin-right: 20px;
+    text-align: center;
+    border-right: 1px solid #666;
+    border-radius: 10px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    box-sizing: border-box;
+    padding-left: 20px;
+    padding-right: 20px;
+    user-select: none;
+}
+.nav_remove{
+   display: none;
+}
+
+.nav_wrap ul li:hover{
+    background-color: rgba(255, 255, 255, 0.6);
+}
+.nav_wrap ul li:hover .nav_remove{
+    display: block;
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    width: 18px;
+    height: 18px;
+    line-height: 18px;
+    border-radius: 50%;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.3);
+}
+/* 内容中心区域 */
+.content{
+    position: absolute;
+    height: 520px;
+    user-select: none;
+}
+
+  /* 底部播放器区域 */
+  .play_wrap{
+        position: absolute;
+        bottom: 0;
+        height: 80px;
+        background-color: #666;
+  }
+
+  .myaudio {
+    width: 1000px;
+    height: 80px;
+    outline: none;
+    background-color: #f1f3f4;
+  }
+
+    /* 歌曲收藏弹出盒子 */
+    .collectionMask{
+        position: absolute;
+        top: 50%;
+        left:50%;
+        transform: translate(-50%,-50%);
+        width: 300px;
+        height: 150px;
+        background-color: rgba(0,0,0,0.8);
+        color: white;
+        text-align: center;
+        box-sizing: border-box;
+        padding-top: 50px;
+      }

@@ -1,0 +1,43 @@
+/* 图标 */
+@font-face {
+  font-family: "iconfont"; /* Project id 3055614 */
+  src: url('iconfont.woff2?t=1640264615037') format('woff2'),
+       url('iconfont.woff?t=1640264615037') format('woff'),
+       url('iconfont.ttf?t=1640264615037') format('truetype');
+}
+  
+  .iconfont {
+    font-family: "iconfont" !important;
+    font-size: 18px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    color: white;
+  }
+  
+  /* 播放图标 */
+  .play:before {
+    content: "\ea6d";
+  }
+
+  /* 搜索图标 */
+  .search:before {
+    content: "\e651";
+  }
+  
+  /* 收藏图标 */
+  .collection:before {
+    content: "\e666";
+  }
+  
+  /* 皮肤图标 */
+  .skin:before {
+    content: "\e743";
+  }
+  
+  /* MV图标 */
+  .MV:before {
+    content: "\e62c";
+  }
+  
+  
+  
