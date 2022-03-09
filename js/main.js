@@ -1,9 +1,5 @@
 window.addEventListener('load', function () {
   // 通用区域js
-  load()
-  function load() {
-    // console.log(1);
-  }
   // search区域js
   searchArea()
   function searchArea() {
@@ -58,7 +54,9 @@ window.addEventListener('load', function () {
       created() {
         let color = localStorage.getItem('color')
         this.color = color
-        $('html').attr('color', this.color)
+        if (color) {
+          $('html').attr('color', this.color)
+        }
       },
       methods: {
         // 搜索歌曲
@@ -106,7 +104,6 @@ window.addEventListener('load', function () {
                   mvid: that.musicList[i].mvid
                 }
               }
-              console.log(that.musicList)
               if (that.musicList == null) {
                 alert('您的搜索有误')
                 that.queryValue = ''
@@ -126,7 +123,6 @@ window.addEventListener('load', function () {
           axios
             .get('http://music.eleuu.com/song/detail?ids=' + musicId)
             .then(function (response) {
-              // console.log(response);
               that.musicPicurl = response.data.songs[0].al.picUrl
             })
             .catch(function (err) {
@@ -136,7 +132,6 @@ window.addEventListener('load', function () {
           axios
             .get('http://music.eleuu.com/comment/hot?type=0&id=' + musicId)
             .then(function (response) {
-              // console.log(response);
               that.hotComments = response.data.hotComments
             })
             .catch(function (err) {
@@ -228,7 +223,6 @@ window.addEventListener('load', function () {
           axios
             .get('https://autumnfish.cn/mv/url?id=' + mvid)
             .then(function (response) {
-              console.log(response)
               that.mvUrl = response.data.data.url
               if (that.mvUrl != null) {
                 that.mvShow = true
@@ -293,7 +287,6 @@ window.addEventListener('load', function () {
           if (!this.color || this.color !== 'dark') {
             localStorage.setItem('color', 'dark')
             $('html').attr('color', 'dark')
-            console.log($('html'))
           }
           this.skinBlack = true
           this.skinWhite = false

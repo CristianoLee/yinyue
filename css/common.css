@@ -41,6 +41,7 @@ hr {
     position: relative;
     width: 1000px;
     height: 700px;
+    -webkit-transition: background 0.8s;
     background: var(--bg) no-repeat center/1000px 700px;
     margin: 100px auto;
 }
